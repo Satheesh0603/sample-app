@@ -27,3 +27,4 @@ func main() {
 	http.HandleFunc("/red", redHandler)
 	http.ListenAndServe(":8080", nil)
 }
+\nfunc redHandler(w http.ResponseWriter, r *http.Request) {\n\timg := image.NewRGBA(image.Rect(0, 0, 100, 100))\n\tdraw.Draw(img, img.Bounds(), &image.Uniform{color.RGBA{255, 0, 0, 255}}, image.Point{}, draw.Src)\n\tw.Header().Set("Content-Type", "image/png")\n\tpng.Encode(w, img)\n}
